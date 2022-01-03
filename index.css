@@ -1,0 +1,20 @@
+
+        #box
+        {
+            display:flex;
+        }
+        #two
+        {
+            display:flex;
+            justify-content: space-between;
+            /* border:2px solid red; */
+            font-size: larger;
+            font-weight: bolder;
+            
+        }
+        #one
+        {
+            /* border:1px solid cadetblue; */
+            margin-right: 70%;
+        }
+    

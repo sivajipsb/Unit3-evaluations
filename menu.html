@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #main
+        {
+            display:grid;
+            grid-template-columns: repeat(5,1fr);
+        }
+
+        #cart
+        {
+            display:flex;
+            
+            height:30px;
+            width:25px;
+            margin-bottom: 50px;
+            margin-left: 80%;
+        }
+    </style>
+</head>
+<body>
+    <div id = "cart">
+    <a  href ="cart.html">cart page</a>
+</div>
+    <div id = "main"></div>
+</body>
+</html>
+<script>
+    var cart= JSON.parse(localStorage.getItem("cartitems"))||[]
+
+   car =  document.createElement("button")
+   car.innerText=cart.length;
+    document.querySelector("#cart").append(car)
+
+
+maindiv = document.querySelector("#main")
+async function dish()
+{
+    let response = await fetch("https://www.themealdb.com/api/json/v1/1/search.php?s=")
+     
+     let result = await response.json()
+     me = result.meals;
+     display(me)
+     console.log(me)
+     console.log(result)
+}
+dish()
+function display(meal)
+{
+     document.querySelector("#main").textContent=""
+
+    meal.map(function(elem)
+    {
+
+        var div = document.createElement("div")
+
+        var name = document.createElement("p")
+        name.innerText=elem.strMeal
+
+        var img =document.createElement("img")
+        img.src= elem.strMealThumb
+        img.style.width="100px"
+        img.style.height="100px"
+
+        var price=document.createElement("p")
+        price.innerHTML=`Price:${Math.ceil( Math.random()*500)} Rs`;
+
+        var button=document.createElement("button")
+        button.textContent="Add to Cart"
+        button.addEventListener("click",function()
+        {
+            console.log("here are you")
+            cart.push(elem)
+            console.log(cart)
+            localStorage.setItem("cartitems",JSON.stringify(cart))
+
+        })
+
+        div.append(img,name,price,button)
+        maindiv.append(div)
+
+    })
+}
+</script>

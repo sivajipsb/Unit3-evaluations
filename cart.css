@@ -1,0 +1,13 @@
+
+         #main
+        {
+            display:grid;
+            grid-template-columns: repeat(5,1fr);
+        }
+   
+
+        #check
+        {
+            margin-bottom: 100px;
+            margin-left: 80%;
+        }
