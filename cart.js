@@ -23,10 +23,10 @@
 
         var button=document.createElement("button")
         button.textContent="remove from cart"
-        button.addEventListener("click",function()
+        button.removeEventListener("click",function()
         {
             console.log("here are you")
-            cart.push(elem)
+            cart.pop(elem)
             console.log(cart)
             localStorage.setItem("cartitems",JSON.stringify(cart))
 
@@ -37,6 +37,8 @@
 
     })
 }
+
+
 
 
  console.log(data)

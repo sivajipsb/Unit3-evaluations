@@ -32,6 +32,7 @@
 </html>
 <script>
     var cart= JSON.parse(localStorage.getItem("cartitems"))||[]
+    
 
    car =  document.createElement("button")
    car.innerText=cart.length;
@@ -78,11 +79,15 @@ function display(meal)
             cart.push(elem)
             console.log(cart)
             localStorage.setItem("cartitems",JSON.stringify(cart))
+        //     car =  document.createElement("button")
+        // //    car.innerText=cart.length || []
+        //    document.querySelector("#cart").append(car)
 
         })
-
+        // document.querySelector("#cart").textContent=""
         div.append(img,name,price,button)
         maindiv.append(div)
+
 
     })
 }
